@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/clock-app/static/css/main.08e41838.chunk.css",
+    "main.js": "/clock-app/static/js/main.77cd479d.chunk.js",
+    "main.js.map": "/clock-app/static/js/main.77cd479d.chunk.js.map",
+    "runtime-main.js": "/clock-app/static/js/runtime-main.4cb4b103.js",
+    "runtime-main.js.map": "/clock-app/static/js/runtime-main.4cb4b103.js.map",
+    "static/js/2.54d71e83.chunk.js": "/clock-app/static/js/2.54d71e83.chunk.js",
+    "static/js/2.54d71e83.chunk.js.map": "/clock-app/static/js/2.54d71e83.chunk.js.map",
+    "static/js/3.8a2f1c06.chunk.js": "/clock-app/static/js/3.8a2f1c06.chunk.js",
+    "static/js/3.8a2f1c06.chunk.js.map": "/clock-app/static/js/3.8a2f1c06.chunk.js.map",
+    "index.html": "/clock-app/index.html",
+    "static/css/main.08e41838.chunk.css.map": "/clock-app/static/css/main.08e41838.chunk.css.map",
+    "static/js/2.54d71e83.chunk.js.LICENSE.txt": "/clock-app/static/js/2.54d71e83.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/clock-app/static/media/icon-sun.cb7a2aac.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4cb4b103.js",
+    "static/js/2.54d71e83.chunk.js",
+    "static/css/main.08e41838.chunk.css",
+    "static/js/main.77cd479d.chunk.js"
+  ]
+}
