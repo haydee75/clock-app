@@ -77,9 +77,8 @@ class App extends Component {
         userData: userData
       })
     }).catch(error => {
-      alert('It look like the API worldtimeapi kinda sucks please give another try to get dynamic datas and reload the page OR stay and get hard coded datas...')
       this.setState({
-        apiMessage: 'It look like that API kinda sucks please reload the page...'
+        apiMessage: 'It look like the API worldtimeapi kinda sucks please give another try to get dynamic datas and reload the page OR stay and get hard coded datas...'
       })
     });
   }
@@ -114,9 +113,7 @@ class App extends Component {
   render() {
     return (
       <section className="Container">
-        {/* <p>{this.state.apiMessage}</p> */}
         <div className={`Row ${this.state.getDayTime ? 'Morning' : 'Evening'}`}>
-
           <div className="Content Main-info">
             <div className={`Content up ${this.state.isToggleOn ? 'hidden' : 'visible'}`}>
               <figure className="quote">
@@ -169,6 +166,7 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <i style={{color:"red"}}>{this.state.apiMessage}</i>
       </section>
     );
   }
