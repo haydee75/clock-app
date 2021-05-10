@@ -1,0 +1,574 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap");
+
+html,
+body,
+body div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+html {
+  --light-grey-color: #f2f2f2;
+  --white-color: #fff;
+  --black-color: #303030;
+  --dark-bg: rgba(0, 0, 0, 0.75);
+  --font-inter: "Inter", sans-serif;
+}
+
+body {
+  background: var(--light-grey-color);
+  font-family: var(--font-inter);
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--white-color);
+
+  h1 {
+    font-weight: bold;
+    font-size: 200px;
+    line-height: 200px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 175px;
+      line-height: 175px;
+    }
+
+    @media screen and (max-width: 680px) {
+      font-size: 100px;
+      line-height: 100px;
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 56px;
+    line-height: 68px;
+
+    @media screen and (max-width: 1025px) {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    @media screen and (max-width: 680px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  h3 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 680px) {
+      font-size: 15px;
+    }
+  }
+
+  h4 {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 680px) {
+      font-size: 15px;
+      line-height: 25px;
+    }
+  }
+
+  h5 {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  h6 {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 28px;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 680px) {
+      font-size: 10px;
+    }
+  }
+
+  .Container {
+    max-width: 1440px;
+    width: 100%;
+    margin: auto;
+
+    .Row {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 800px;
+      margin: 0 auto;
+
+      @media screen and (max-width: 768px) {
+        height: 1024px;
+      }
+
+      @media screen and (max-width: 680px) {
+        height: 667px;
+      }
+
+      .Content {
+        transition: min-height 1s ease;
+        overflow: auto;
+
+        &.Main-info {
+          padding: 0 64px;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          min-height: 800px;
+          height: 800px;
+
+          @media screen and (max-width: 768px) {
+            min-height: 1024px;
+            height: 1024px;
+          }
+
+          @media screen and (max-width: 680px) {
+            padding: 31px 26px;
+            min-height: 667px !important;
+            height: 667px;
+          }
+
+          .up,
+          .down {
+            height: 400px;
+            margin: 0 auto;
+          }
+
+          .up {
+            max-width: 1110px;
+            width: 100%;
+            min-height: 0;
+            height: 0;
+            display: flex;
+            padding-top: 50px;
+
+            @media screen and (max-width: 768px) {
+              padding-top: 80px;
+            }
+
+            @media screen and (max-width: 680px) {
+              padding-top: 0;
+            }
+
+            &.visible {
+              transition: min-height 1s ease;
+              min-height: 400px;
+
+              @media screen and (max-width: 768px) {
+                min-height: 520px;
+              }
+
+              @media screen and (max-width: 680px) {
+                min-height: 250px;
+              }
+            }
+
+            .quote {
+              max-width: 540px;
+              width: 100%;
+
+              blockquote {
+                font-weight: 400;
+                color: var(--white-color);
+                font-size: 18px;
+                line-height: 28px;
+
+                @media screen and (max-width: 680px) {
+                  font-size: 12px;
+                  line-height: 22px;
+                }
+
+                &::before {
+                  content: "“";
+                }
+
+                &::after {
+                  content: "”";
+                }
+              }
+
+              figcaption {
+                margin-top: 13px;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 28px;
+
+                @media screen and (max-width: 680px) {
+                  font-size: 12px;
+                  line-height: 22px;
+                }
+              }
+            }
+
+            .refreshCta {
+              margin: 6px 0 0 6px;
+
+              svg {
+                cursor: pointer;
+
+                path {
+                  transition: opacity 0.2s ease-in-out;
+                }
+
+                &:hover {
+                  path {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+
+          .down {
+            max-width: 1110px;
+            width: 100%;
+            display: flex;
+            padding-bottom: 110px;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+
+            @media screen and (max-width: 680px) {
+              height: 350px;
+              padding-bottom: 0;
+            }
+
+            .welcome-content {
+              display: flex;
+              flex-direction: column;
+
+              h4 {
+                &::before {
+                  margin-right: 16px;
+                  width: 24px;
+                  height: 24px;
+                }
+
+                @media screen and (max-width: 680px) {
+                  .hide-mobile {
+                    display: none;
+                  }
+                }
+              }
+
+              .time-content {
+                margin-top: 16px;
+
+                h1 > span {
+                  text-transform: uppercase;
+                  margin-left: 11px;
+                  font-weight: 300;
+                  font-size: 40px;
+                  line-height: 28px;
+
+                  @media screen and (max-width: 680px) {
+                    font-size: 15px;
+                  }
+                }
+              }
+
+              .location-content {
+                margin-top: 16px;
+              }
+            }
+
+            .btn-toggle {
+              border: none;
+              border-radius: 30px;
+              width: 146px;
+              height: 56px;
+              font-size: 16px;
+              line-height: 28px;
+              letter-spacing: 5px;
+              text-transform: uppercase;
+
+              @media screen and (max-width: 768px) {
+                margin-top: 80px;
+              }
+
+              @media screen and (max-width: 680px) {
+                margin-top: 30px;
+                width: 115px;
+                height: 39px;
+                font-size: 12px;
+                line-height: 14px;
+              }
+
+              > span {
+                padding: 0 0 0 5px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                cursor: pointer;
+
+                &::after {
+                  width: 40px;
+                  height: 40px;
+                  content: url("images/desktop/icon-arrow-up.svg");
+                  transform: rotate(180deg);
+                  transition: transform 0.6s ease-in-out;
+
+                  @media screen and (max-width: 680px) {
+                    width: 32px;
+                    height: 32px;
+                    content: "";
+                    background: url("images/desktop/icon-arrow-up.svg");
+                    background-size: cover;
+                  }
+                }
+
+                &:hover {
+                  opacity: 0.5;
+                  transition: opacity 0.2s ease;
+                }
+
+                &.active {
+                  &::after {
+                    transform: rotate(0deg);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.More-info {
+          padding: 0 64px;
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+          left: 0;
+          background: rgba(255, 255, 255, 0.75);
+          backdrop-filter: blur(15.7742px);
+          min-height: 0;
+          height: 0;
+          color: var(--black-color);
+          transition: color 0.2 ease;
+
+          &.visible {
+            transition: min-height 1s ease;
+            min-height: 400px;
+
+            @media screen and (max-width: 768px) {
+              min-height: 440px;
+            }
+
+            @media screen and (max-width: 680px) {
+              min-height: 256px;
+            }
+          }
+
+          @media screen and (max-width: 680px) {
+            padding: 0;
+          }
+
+          &.hover {
+            @media screen and (min-width: 768px) {
+              color: #666;
+            }
+          }
+
+          .More-Content {
+            padding: 74px 0;
+            max-width: 1100px;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+
+            @media screen and (max-width: 768px) {
+              padding: 119px 0 0;
+            }
+
+            @media screen and (max-width: 680px) {
+              flex-direction: column;
+              padding: 40px 26px;
+            }
+
+            .left-content,
+            .right-content {
+              width: 50%;
+              height: 252px;
+
+              @media screen and (max-width: 680px) {
+                width: 100%;
+                height: auto;
+              }
+
+              > div {
+                margin-bottom: 42px;
+
+                @media screen and (max-width: 768px) {
+                  margin-bottom: 48px;
+                }
+
+                @media screen and (max-width: 680px) {
+                  margin-bottom: 16px;
+                  display: flex;
+                  justify-content: space-between;
+                }
+              }
+            }
+
+            .left-content {
+              border-right: 1px solid;
+
+              @media screen and (max-width: 768px) {
+                border: none;
+              }
+            }
+
+            .right-content {
+              padding-left: 94px;
+
+              @media screen and (max-width: 680px) {
+                padding: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &.Morning {
+        .Content {
+          &.Main-info {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+              url("images/desktop/bg-image-daytime.jpg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            min-height: 800px;
+
+            .down {
+              .welcome-content {
+                h4 {
+                  display: flex;
+                  align-items: center;
+
+                  &::before {
+                    content: url("images/desktop/icon-sun.svg");
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.Evening {
+        .Content {
+          &.Main-info {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+              url("images/desktop/bg-image-nighttime.jpg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            min-height: 800px;
+
+            .down {
+              .welcome-content {
+                h4 {
+                  display: flex;
+                  align-items: center;
+
+                  &::before {
+                    content: url("images/desktop/icon-moon.svg");
+                  }
+                }
+              }
+            }
+          }
+
+          &.More-info {
+            background: var(--dark-bg);
+            color: var(--white-color);
+          }
+        }
+      }
+    }
+  }
+
+  .attribution {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+  }
+}

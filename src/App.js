@@ -1,25 +1,177 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Moment from 'react-moment';
+import "./App.scss";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    let today = new Date()
+    let curHr = today.getHours()
+
+    let getDayTime;
+
+    if (curHr < 12) {
+      getDayTime = true
+    } else {
+      getDayTime = false
+    }
+
+    this.state = {
+      apiMessage: "",
+      isToggleOn: false,
+      isHover: false,
+      loading: false,
+      getDayTime: getDayTime,
+      city: "",
+      countryCode: "",
+      userData: {},
+      randomQuote: {}
+    };
+
+    this.generateRandomQuote = this.generateRandomQuote.bind(this);
+    this.toggleInfos = this.toggleInfos.bind(this);
+    this.hoverBtn = this.hoverBtn.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({loading: true})
+    fetch("https://api.quotable.io/random")
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject(response);
+        }})
+      .then(data => {
+        this.setState({
+          loading: false,
+          randomQuote: data
+      })
+    })   
+
+    fetch('https://freegeoip.app/json/')
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject(response);
+        }})
+        .then(data => {
+          console.log(data)
+          this.setState({
+            city: data.city,
+            countryCode: data.country_code
+          })
+
+	  return fetch('http://worldtimeapi.org/api/ip/' + data.ip);
+
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(userData => {
+      this.setState({
+        userData: userData
+      })
+    }).catch(error => {
+      alert('It look like that API kinda sucks please reload the page...')
+      this.setState({
+        apiMessage: 'It look like that API kinda sucks please reload the page...'
+      })
+    });
+  }
+
+  generateRandomQuote() {
+    fetch("https://api.quotable.io/random")
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject(response);
+        }})
+      .then(data => {
+        this.setState({
+          randomQuote: data
+      })
+    })
+  }
+
+  toggleInfos() {
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }));
+  }
+
+  hoverBtn() {
+    this.setState(state => ({
+      isHover: !state.isHover
+    }));
+  }
+  
+  render() {
+    return (
+      <section className="Container">
+        {/* <p>{this.state.apiMessage}</p> */}
+        <div className={`Row ${this.state.getDayTime ? 'Morning' : 'Evening'}`}>
+
+          <div className="Content Main-info">
+            <div className={`Content up ${this.state.isToggleOn ? 'hidden' : 'visible'}`}>
+              <figure className="quote">
+                <blockquote>{this.state.randomQuote.content}</blockquote>
+                <figcaption>{this.state.randomQuote.author}</figcaption>
+                </figure>
+              <span className="refreshCta" onClick={this.generateRandomQuote}><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M7.188 10.667a.208.208 0 01.147.355l-2.344 2.206a5.826 5.826 0 009.578-2.488l2.387.746A8.322 8.322 0 013.17 14.94l-2.149 2.022a.208.208 0 01-.355-.148v-6.148h6.52zm7.617-7.63L16.978.958a.208.208 0 01.355.146v6.23h-6.498a.208.208 0 01-.147-.356L13 4.765A5.825 5.825 0 003.43 7.26l-2.386-.746a8.32 8.32 0 0113.76-3.477z" fill="#FFF" fillRule="nonzero" opacity=".5"/></svg></span>
+            </div>
+            <div className="down">
+              <div className="welcome-content">
+                <h4>{ this.state.getDayTime ? 'Good Morning' : 'Good Evening' }<span className="hide-mobile">, it's currently</span></h4>
+                <div className="time-content">
+                  <h1>
+                    <Moment format="hh:mm">
+                      {this.state.userData.datetime}
+                    </Moment>
+                    <span>{this.state.userData.abbreviation}</span>
+                  </h1>
+                </div>
+                <div className="location-content">
+                  <h3>in {this.state.city ? this.state.city : "Montreal"}, {this.state.countryCode}</h3>
+                </div>
+              </div>
+              <button className="btn-toggle" onClick={this.toggleInfos} onMouseEnter={this.hoverBtn} onMouseLeave={this.hoverBtn}><span className={this.state.isToggleOn ? 'active' : ''}>{this.state.isToggleOn ? 'Less' : 'More'}</span></button>
+            </div>
+          </div>
+
+          <div className={`Content More-info ${this.state.isToggleOn ? 'visible' : 'hidden'} ${this.state.isHover ? 'hover' : ''}`}>
+            <div className="More-Content">
+              <div className="left-content">
+                <div className="timezone">
+                  <h6>Current timezone</h6>
+                  <h2>{this.state.userData.timezone}</h2>
+                </div>
+                <div className="day-of-year">
+                  <h6>Day of the year</h6>
+                  <h2>{this.state.userData.day_of_year}</h2>
+                </div>
+              </div>
+              <div className="right-content">
+                <div className="day-of-week">
+                  <h6>Day of the week</h6>
+                  <h2>{this.state.userData.day_of_week}</h2>
+                </div>
+                <div className="week-number">
+                  <h6>Week number</h6>
+                  <h2>{this.state.userData.week_number}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 }
 
 export default App;
