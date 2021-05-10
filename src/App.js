@@ -77,7 +77,7 @@ class App extends Component {
         userData: userData
       })
     }).catch(error => {
-      alert('It look like that API kinda sucks please reload the page...')
+      alert('It look like the API worldtimeapi kinda sucks please give another try to get dynamic datas and reload the page OR stay and get hard coded datas...')
       this.setState({
         apiMessage: 'It look like that API kinda sucks please reload the page...'
       })
@@ -133,7 +133,7 @@ class App extends Component {
                     <Moment format="hh:mm">
                       {this.state.userData.datetime}
                     </Moment>
-                    <span>{this.state.userData.abbreviation}</span>
+                    <span>{this.state.userData.abbreviation ? this.state.userData.abbreviation : "EDT"}</span>
                   </h1>
                 </div>
                 <div className="location-content">
@@ -149,21 +149,21 @@ class App extends Component {
               <div className="left-content">
                 <div className="timezone">
                   <h6>Current timezone</h6>
-                  <h2>{this.state.userData.timezone}</h2>
+                  <h2>{this.state.userData.timezone ? this.state.userData.timezone : "America/Toronto"}</h2>
                 </div>
                 <div className="day-of-year">
                   <h6>Day of the year</h6>
-                  <h2>{this.state.userData.day_of_year}</h2>
+                  <h2>{this.state.userData.day_of_year ? this.state.userData.day_of_year : "130"}</h2>
                 </div>
               </div>
               <div className="right-content">
                 <div className="day-of-week">
                   <h6>Day of the week</h6>
-                  <h2>{this.state.userData.day_of_week}</h2>
+                  <h2>{this.state.userData.day_of_week ? this.state.userData.day_of_week : "1"}</h2>
                 </div>
                 <div className="week-number">
                   <h6>Week number</h6>
-                  <h2>{this.state.userData.week_number}</h2>
+                  <h2>{this.state.userData.week_number ? this.state.userData.week_number : "19"}</h2>
                 </div>
               </div>
             </div>
